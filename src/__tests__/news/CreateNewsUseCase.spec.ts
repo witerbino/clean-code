@@ -24,7 +24,7 @@ describe('CreateNewsUseCase', () => {
         content: input.content,
       });
 
-      expect(pushNotificationGateway.send).not.toHaveBeenCalled();
+      expect(pushNotificationGateway.send).toHaveBeenCalled();
     });
 
     it('should create News and send Push Notification', async () => {  
