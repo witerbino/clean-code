@@ -1,7 +1,7 @@
 import { User } from '@/domain/entities';
 import { describe, expect, it, vi } from 'vitest';
 
-describe('CreateNewsUseCase', () => {
+describe('UserEntity', () => {
 
   describe('Success', () => {
     it('should create User entity', () => {
@@ -25,7 +25,7 @@ describe('CreateNewsUseCase', () => {
   });
 
   describe('Error', () => {
-    it('should return falst if is not valid', () => {
+    it('should return false if is not valid', () => {
       const user = User.create({
         name: '',
         age: 32
