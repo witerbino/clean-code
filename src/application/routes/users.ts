@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
 export default Router()
-  .get('/', (req, res) => {
+  .get('/', (_, res) => {
     return res.send('Funcionando.......');
   });
