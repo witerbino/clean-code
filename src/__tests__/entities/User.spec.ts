@@ -1,5 +1,5 @@
 import { User } from '@/domain/entities';
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 describe('UserEntity', () => {
 
@@ -25,10 +25,19 @@ describe('UserEntity', () => {
   });
 
   describe('Error', () => {
-    it('should return false if is not valid', () => {
+    it('should return false if is not valid (without name)', () => {
       const user = User.create({
         name: '',
         age: 32
+      });
+
+      expect(user.isValid()).toBeFalsy();
+    });
+
+    it('should return false if is not valid (without age)', () => {
+      const user = User.create({
+        name: 'John',
+        age: null
       });
 
       expect(user.isValid()).toBeFalsy();
