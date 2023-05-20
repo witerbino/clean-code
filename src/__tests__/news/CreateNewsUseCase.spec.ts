@@ -10,15 +10,15 @@ describe('CreateNewsUseCase', () => {
   describe('Success', () => {
     it('should create News and not send Push Notification', async () => {
       vi.spyOn(pushNotificationGateway, 'send');
-  
+
       const input: CreateNewsInput = {
         title: 'My first title',
         content: 'lorem ipsum dolor sit am',
         sendNotification: false
       };
-  
+
       const news = await useCase.execute(input);
-  
+
       expect(news).toMatchObject({
         title: input.title,
         content: input.content,
@@ -27,22 +27,22 @@ describe('CreateNewsUseCase', () => {
       expect(pushNotificationGateway.send).not.toHaveBeenCalled();
     });
 
-    it('should create News and send Push Notification', async () => {  
+    it('should create News and send Push Notification', async () => {
       vi.spyOn(pushNotificationGateway, 'send');
-  
+
       const input: CreateNewsInput = {
         title: 'My first title',
         content: 'lorem ipsum dolor sit am',
         sendNotification: true
       };
-  
+
       const news = await useCase.execute(input);
-  
+
       expect(news).toMatchObject({
         title: input.title,
         content: input.content,
       });
-  
+
       expect(pushNotificationGateway.send).toHaveBeenCalledTimes(1);
       expect(pushNotificationGateway.send).toHaveBeenCalledWith({
         id: undefined,
@@ -59,7 +59,7 @@ describe('CreateNewsUseCase', () => {
         content: 'lorem ipsum dolor sit am',
         sendNotification: false
       };
-  
+
       expect(async () => {
         await useCase.execute(input);
       }).rejects.toBeInstanceOf(InvalidParamError);

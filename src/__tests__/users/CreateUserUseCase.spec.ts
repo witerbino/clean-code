@@ -13,9 +13,9 @@ describe('CreateUserUseCase', () => {
         name: 'Wallace Viterbino',
         age: 31
       };
-  
+
       const user = await useCase.execute(input);
-  
+
       expect(user).toMatchObject({
         name: 'Wallace Viterbino',
         age: 31
@@ -29,7 +29,7 @@ describe('CreateUserUseCase', () => {
         name: 'Wallace Viterbino',
         age: null
       };
-  
+
       expect(async () => {
         await useCase.execute(input);
       }).rejects.toBeInstanceOf(InvalidParamError);
@@ -40,7 +40,7 @@ describe('CreateUserUseCase', () => {
         name: '',
         age: 31
       };
-  
+
       expect(async () => {
         await useCase.execute(input);
       }).rejects.toBeInstanceOf(InvalidParamError);
