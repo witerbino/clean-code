@@ -12,8 +12,12 @@ export class CreateNewsUseCase implements IUseCase<CreateNewsInput, News> {
     private readonly pushNotificationGateway: PushNotificationGateway
   ) { }
 
-  async execute(input: CreateNewsInput): Promise<News> {
-    const news = News.create({ ...input });
+  async execute({ 
+    title, 
+    content, 
+    sendNotification 
+  }: CreateNewsInput): Promise<News> {
+    const news = News.create({ title, content });
 
     if (!news.isValid()) {
       throw new InvalidParamError();
@@ -21,7 +25,7 @@ export class CreateNewsUseCase implements IUseCase<CreateNewsInput, News> {
 
     const entity = await this.newsRepository.create(news);
 
-    if (input.sendNotification) {
+    if (sendNotification) {
       await this.pushNotificationGateway.send({
         id: entity.id,
         title: entity.title,
