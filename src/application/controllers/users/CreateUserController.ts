@@ -11,7 +11,9 @@ export class CreateUserController implements Controller<CreateUserInput> {
     const result = this.createUserUseCase.execute(request.body);
 
     return {
-      data: result,
+      data: [
+        { nome: 'Wallace Viterbino'}
+      ],
       status: 200,
     };
   }

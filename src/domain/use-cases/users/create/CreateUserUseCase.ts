@@ -16,8 +16,8 @@ export class CreateUserUseCase implements IUseCase<CreateUserInput, User> {
       throw new InvalidParamError();
     }
 
-    const userEntity = await this.usersRepository.create(user);
+    const createdUser = await this.usersRepository.create(user);
 
-    return userEntity;
+    return createdUser;
   }
 }

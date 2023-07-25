@@ -53,7 +53,7 @@ describe('CreateNewsUseCase', () => {
   });
 
   describe('Error', () => {
-    it('should throw InvalidParamError', async () => {
+    it('should throw InvalidParamError if not title', async () => {
       const input: CreateNewsInput = {
         title: '',
         content: 'lorem ipsum dolor sit am',

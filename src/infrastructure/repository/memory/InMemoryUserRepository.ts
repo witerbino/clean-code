@@ -2,7 +2,7 @@ import { User } from '@/domain/entities/User';
 import { UsersRepository } from '@/domain/repositories';
 
 export class InMemoryUserRepository implements UsersRepository {
-  private _users: User[] = [];
+  private _users: User[];
 
   constructor() {
     this._users = [];
