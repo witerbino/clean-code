@@ -2,6 +2,12 @@ pipeline {
 	agent any
 
 	stages {
+    stage('Checkout') {
+			steps {
+				git 'https://github.com/witerbino/clean-code.git'
+			}
+		}
+    
 		stage('Checkout') {
 			steps {
 				echo 'Baixando projeto'
