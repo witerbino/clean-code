@@ -5,6 +5,7 @@ pipeline {
     stage('Checkout') {
 			steps {
 				git 'https://github.com/witerbino/clean-code.git'
+				echo 'Checkout'
 			}
 		}
     
